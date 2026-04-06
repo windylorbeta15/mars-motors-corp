@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="MarsMotors — heavy-duty vehicle diagnostics, maintenance, and performance work." />
+    <title>MarsMotors | Engineering-grade automotive service</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Rubik:wght@500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-zinc-50 antialiased text-zinc-700">
+    <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[120] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-zinc-900 focus:shadow-lg">Skip to content</a>
+
+    <div id="preloader" class="preloader is-active fixed inset-0 z-[110] flex items-center justify-center bg-zinc-950" aria-hidden="true">
+      <div class="flex flex-col items-center gap-4">
+        <div class="h-12 w-12 rounded-full border-2 border-brand border-t-transparent animate-spin" aria-hidden="true"></div>
+        <span class="text-sm font-medium tracking-wide text-zinc-400">MarsMotors</span>
+      </div>
+    </div>
+
+    <div id="offcanvasOverlay" class="fixed inset-0 z-[80] bg-zinc-950/60 opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
+
+    <aside
+      id="offcanvas"
+      class="fixed right-0 top-0 z-[90] flex h-full w-full max-w-md translate-x-full flex-col bg-white shadow-2xl transition-transform duration-300 ease-out"
+      aria-hidden="true"
+      aria-label="Side menu"
+    >
+      <div class="flex items-center justify-between border-b border-zinc-100 px-6 py-5">
+        <a href="#home" class="offcanvas-close-trigger font-playtime text-lg font-bold text-zinc-900">MarsMotors</a>
+        <button type="button" id="offcanvasClose" class="rounded p-2 text-zinc-600 hover:bg-zinc-100" aria-label="Close menu">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto px-6 py-6">
+        <p class="text-sm leading-relaxed text-zinc-600">MarsMotors serves heavy-duty, military, industrial, and commercial fleets with diagnostics, maintenance, and performance upgrades.</p>
+        <nav class="mt-8 flex flex-col gap-1 border-t border-zinc-100 pt-6">
+          <a class="offcanvas-close-trigger rounded-lg px-3 py-2 text-2xl font-semibold text-zinc-900 hover:bg-zinc-100" href="#home">Home</a>
+          <a class="offcanvas-close-trigger rounded-lg px-3 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-100" href="#homeabout">About</a>
+          <a class="offcanvas-close-trigger rounded-lg px-3 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-100" href="#homeservices">Services</a>
+          <a class="offcanvas-close-trigger rounded-lg px-3 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-100" href="#homeportfolio">Portfolio</a>
+          <a class="offcanvas-close-trigger rounded-lg px-3 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-100" href="#homecontact">Contact</a>
+        </nav>
+        <div class="mt-8 border-t border-zinc-100 pt-8">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-900">Contact</h3>
+          <ul class="mt-4 space-y-3 text-sm text-zinc-600">
+            <li>2096 New Market, New Road<br />North Carolina, USA</li>
+            <li><a class="hover:text-brand" href="tel:+12346691234">+123-4669-1234</a></li>
+            <li><a class="hover:text-brand" href="mailto:info@marsmotors.example">info@marsmotors.example</a></li>
+          </ul>
+        </div>
+        <div class="mt-8">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-900">Follow</h3>
+          <div class="mt-3 flex gap-2">
+            <a href="#" class="flex h-10 w-10 items-center justify-center rounded border border-zinc-200 text-zinc-600 hover:border-brand hover:text-brand" aria-label="Facebook">f</a>
+            <a href="#" class="flex h-10 w-10 items-center justify-center rounded border border-zinc-200 text-zinc-600 hover:border-brand hover:text-brand" aria-label="X">𝕏</a>
+            <a href="#" class="flex h-10 w-10 items-center justify-center rounded border border-zinc-200 text-zinc-600 hover:border-brand hover:text-brand" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <header
+      id="siteHeader"
+      class="fixed left-0 right-0 top-0 z-[70] border-b border-transparent transition-colors duration-300"
+      data-header
+    >
+      <div class="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-4 md:px-6 lg:px-10">
+        <a href="#home" class="fade-in-ltr flex items-center gap-3 shrink-0">
+          <img src="./dist/images/mars-logo-only (4).png" alt="MarsMotors" class="h-9 w-200px max-w-[160px] object-contain lg:h-15" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')" />
+          <span class="font-playtime hidden text-xl font-bold tracking-tight text-white">MarsMotors</span>
+        </a>
+
+        <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          <a class="nav-link-slide-down text-sm font-semibold text-white/90 hover:text-brand" href="#home">Home</a>
+          <a class="nav-link-slide-down nav-link-slide-down-delay-1 text-sm font-semibold text-white/90 hover:text-brand" href="#homeabout">About</a>
+          <a class="nav-link-slide-down nav-link-slide-down-delay-2 text-sm font-semibold text-white/90 hover:text-brand" href="#homeservices">Services</a>
+          <a class="nav-link-slide-down nav-link-slide-down-delay-3 text-sm font-semibold text-white/90 hover:text-brand" href="#homeportfolio">Products</a>
+          <a class="nav-link-slide-down nav-link-slide-down-delay-4 text-sm font-semibold text-white/90 hover:text-brand" href="#homecontact">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2 md:gap-4">
+          <h6 class="hidden text-sm font-semibold text-white xl:block">
+            <a href="tel:+971555961659" class="hover:text-brand">Tel. +97 155 596 1659</a>
+          </h6>
+
+          <!-- <div class="relative hidden md:block" id="searchWrap">
+            <button type="button" id="searchToggle" class="flex h-10 w-10 items-center justify-center rounded border border-white/20 text-white hover:border-brand hover:text-brand" aria-expanded="false" aria-controls="searchPanel" aria-label="Search">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </button>
+            <div id="searchPanel" class="absolute right-0 top-full mt-2 hidden w-72 rounded-lg border border-zinc-200 bg-white p-3 shadow-xl" role="search">
+              <form class="flex gap-2" action="#" method="get">
+                <input type="search" name="q" placeholder="Searching…" class="min-w-0 flex-1 rounded border border-zinc-200 px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand" />
+                <button type="submit" class="rounded bg-brand px-3 py-2 text-sm font-semibold text-white hover:bg-brand/90">Go</button>
+              </form>
+            </div>
+          </div> -->
+
+          <button type="button" id="offcanvasOpen" class="flex h-10 w-10 items-center justify-center rounded border border-white/20 text-white hover:border-brand hover:text-brand lg:hidden" aria-label="Open menu">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm8 5h12v2H12v-2zM4 16h16v2H4v-2z"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section id="home" class="relative flex min-h-screen items-center overflow-hidden bg-zinc-950 pt-24 pb-16">
+        <div class="absolute inset-0">
+          <img src="./dist/images/banner-bg.jpg" alt="" class="h-full w-full object-cover" />
+          <!-- <div class="hero-overlay-red absolute inset-0"></div> -->
+        </div>
+        <div class="relative mx-auto w-full max-w-[1600px] px-4 md:px-6 lg:px-10">
+          <div class="max-w-3xl">
+            <h1 class="hero-fade-in-ltr font-playtime text-4xl font-bold leading-[1.1] text-white md:text-5xl lg:text-6xl xl:text-7xl">
+              Mars Motors Corporation
+            </h1>
+            <p class="hero-fade-in-ltr hero-fade-in-ltr-delay-1 mt-6 max-w-xl text-lg text-zinc-200 md:text-xl">
+              Since 2015 we’ve helped customers complete projects on time and within budget — from diagnostics to heavy-duty rebuilds.
+            </p>
+            <div class="hero-fade-in-ltr hero-fade-in-ltr-delay-2 mt-8">
+              <a
+                href="#homecontact"
+                class="group inline-flex items-center gap-3 rounded bg-brand px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-brand/25 transition hover:bg-brand/90"
+              >
+                Explore more
+                <span class="inline-flex h-8 w-8 items-center justify-center rounded bg-white/15 transition group-hover:translate-x-0.5">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true"><path d="M31.71 15.29l-10-10L20.29 6.71 28.59 15H0v2h28.59l-8.29 8.29 1.41 1.41 10-10a1 1 0 000-1.41z"/></svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="border-y border-zinc-800 bg-blue-1000 py-6">
+        <div class="overflow-hidden">
+          <div class="marquee-track gap-12 pr-12 text-transparent text-stroke-white ">
+            <div class="flex items-center gap-12 pr-12">
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Military</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Industrial</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Heavy duty</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Commercial</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Performance</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+            </div>
+            <div class="flex items-center gap-12 pr-12" aria-hidden="true">
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Military</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Industrial</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Heavy duty</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Industrial</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+              <span class="font-playtime text-4xl font-bold md:text-5xl tracking-widest">Performance</span>
+              <span class="marquee-tools-icon opacity-90" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="homeabout" class="py-20 lg:py-55 bg-white">
+        <div class="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-10">
+          <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <div class="reveal-slide-ltr section-sub-chevron mb-4 text-brand" data-reveal-ltr>
+                About MarsMotors
+              </div>
+              <h2 class="reveal-slide-rtl reveal-stagger-1 font-playtime text-3xl font-bold text-zinc-900 md:text-7xl" data-reveal-rtl>
+                We work for you <span class="text-brand">since 2015,</span>Trusted in the field worldwide.
+              </h2>
+              <p class="reveal-slide-ltr reveal-stagger-2 mt-4 text-zinc-600" data-reveal-ltr>
+                We combine workshop craft with disciplined process: clear approvals, documented findings, and parts you can trust.
+              </p>
+
+              <div class="reveal-slide-rtl reveal-stagger-3 mt-8 flex flex-wrap gap-2" role="tablist" aria-label="About tabs" data-reveal-rtl>
+                <button type="button" class="about-tab rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-semibold text-zinc-700 data-[active=true]:border-brand data-[active=true]:text-brand" data-about-tab="h" data-active="true">Our history</button>
+                <button type="button" class="about-tab rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-semibold text-zinc-700 data-[active=true]:border-brand data-[active=true]:text-brand" data-about-tab="m">Our mission</button>
+                <button type="button" class="about-tab rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-semibold text-zinc-700 data-[active=true]:border-brand data-[active=true]:text-brand" data-about-tab="v">Our vision</button>
+              </div>
+              <div class="reveal-slide-ltr reveal-stagger-4 mt-6 space-y-4 text-zinc-600" data-reveal-ltr>
+                <p id="aboutPanel" class="text-base leading-relaxed">
+                  MarsMotors grew from a single heavy-duty bay into a full diagnostics and fleet partner — always chasing the same thing: get it right the first time, with proof in the report.
+                </p>
+              </div>
+              <div class="reveal-slide-rtl reveal-stagger-5 mt-8 flex flex-wrap items-center gap-6" data-reveal-rtl>
+                <a
+                  href="#homecontact"
+                  class="group inline-flex items-center gap-3 rounded bg-brand px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-brand/90"
+                >
+                  Explore more
+                  <svg class="h-4 w-4 transition group-hover:translate-x-0.5" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true"><path d="M31.71 15.29l-10-10L20.29 6.71 28.59 15H0v2h28.59l-8.29 8.29 1.41 1.41 10-10a1 1 0 000-1.41z"/></svg>
+                </a>
+                <!-- <div class="flex items-center gap-3">
+                  <div class="h-12 w-12 overflow-hidden rounded-full ring-2 ring-brand/30">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=120&q=80" alt="" class="h-full w-full object-cover" />
+                  </div>
+                  <div>
+                    <p class="text-sm font-bold text-zinc-900">Lead technician</p>
+                    <p class="text-xs text-zinc-500">MarsMotors workshop</p>
+                  </div>
+                </div> -->
+              </div>
+            </div>        
+            <div class="flex overflow-hidden rounded-lg shadow-2xl ring-1 ring-zinc-200/80 justify-center">
+                <img src="/dist/images/marsmotors-logo.png" alt="MarsMotors facility" class="h-full w-3/4 object-cover" />
+            </div>
+              <!-- <div class="absolute -bottom-6 -left-6 h-32 w-44 overflow-hidden rounded-lg shadow-lg ring-1 ring-white sm:block">
+                <img src="/dist/images/marsmotors-logo.png" alt="" class="h-full w-full object-cover" />
+              </div> -->
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-brand py-16 lg:py-20" aria-label="Statistics">
+        <div class="mx-auto grid max-w-[1600px] gap-10 px-4 sm:grid-cols-2 md:px-6 lg:grid-cols-4 lg:px-10">
+          <div class="text-center text-white">
+            <p class="font-playtime text-4xl font-bold md:text-5xl"><span data-count="50">0</span>+</p>
+            <p class="mt-2 text-sm font-medium uppercase tracking-wide text-white/80">Project Done</p>
+          </div>
+          <div class="text-center text-white">
+            <p class="font-playtime text-4xl font-bold md:text-5xl"><span data-count="25">25</span></p>
+            <p class="mt-2 text-sm font-medium uppercase tracking-wide text-white/80">Years Experience</p>
+          </div>
+          <div class="text-center text-white">
+            <p class="font-playtime text-4xl font-bold md:text-5xl"><span data-count="20">0</span></p>
+            <p class="mt-2 text-sm font-medium uppercase tracking-wide text-white/80">Master techs on staff</p>
+          </div>
+          <div class="text-center text-white">
+            <p class="font-playtime text-4xl font-bold md:text-5xl"><span data-count="5">0</span>k+</p>
+            <p class="mt-2 text-sm font-medium uppercase tracking-wide text-white/80">Happy Client</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="homeservices" class=" bg-gray-50 py-20 lg:py-28" aria-labelledby="services-heading">
+        <div class="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-10">
+          <header class="mb-14 text-center lg:mb-20">
+            <div class="flex items-center justify-center gap-4 mb-4">
+              <span class="h-px w-10 bg-brand sm:w-14" aria-hidden="true"></span>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">Vehicles</p>
+              <span class="h-px w-10 bg-brand  sm:w-14" aria-hidden="true"></span>
+            </div>
+            <h2 id="services-heading" class="font-playtime text-3xl font-bold uppercase tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
+              Our services
+            </h2>
+            <!-- <a
+              href="#homecontact"
+              class="mt-5 inline-block border-b border-zinc-900 pb-0.5 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-900 transition hover:border-brand hover:text-brand"
+            >
+              View all services
+            </a> -->
+          </header>
+
+          <div
+            class="grid gap-14 lg:grid-cols-3 lg:items-stretch lg:gap-10 xl:gap-14"
+            data-reveal-services
+          >
+            <div class="service-reveal-col flex min-h-0 flex-col gap-8 lg:h-full">
+              <div class="shrink-0">
+                <div class="border-t border-b border-zinc-900">
+                  <h3 class="flex items-center gap-2 py-4 font-playtime text-lg font-bold uppercase tracking-wide text-zinc-900 md:text-xl">
+                    <a href="#homecontact" class="hover:text-brand">Oil changes</a>
+                    <span aria-hidden="true" class="text-base font-normal">→</span>
+                  </h3>
+                </div>
+                <p class="mt-6 text-sm leading-relaxed text-zinc-600 md:text-base">
+                  Vehicle maintenance is extremely important and the easiest thing a vehicle owner can do is get the oil changed.
+                </p>
+              </div>
+              <div class="min-h-4 min-w-0 flex-1 lg:min-h-0" aria-hidden="true"></div>
+              <div class="aspect-square w-full shrink-0 overflow-hidden bg-zinc-100">
+                <img
+                  src="./dist/images/services.jpg"
+                  alt="Technician performing an oil service"
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <div class="service-reveal-col flex min-h-0 flex-col gap-8 lg:h-full">
+              <div class="aspect-square w-full shrink-0 overflow-hidden bg-zinc-100">
+                <img
+                  src="./dist/images/commercial.jpg"
+                  alt="Technician running vehicle diagnostics with a laptop"
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="min-h-4 min-w-0 flex-1 lg:min-h-0" aria-hidden="true"></div>
+              <div class="shrink-0">
+                <div class="border-t border-b border-zinc-900">
+                  <h3 class="flex items-center gap-2 py-4 font-playtime text-lg font-bold uppercase tracking-wide text-zinc-900 md:text-xl">
+                    <a href="#homecontact" class="hover:text-brand">Diagnostic</a>
+                    <span aria-hidden="true" class="text-base font-normal">→</span>
+                  </h3>
+                </div>
+                <p class="mt-6 text-sm leading-relaxed text-zinc-600 md:text-base">
+                  Our certified technicians use the latest diagnostic equipment to service and repair your vehicles.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-reveal-col flex min-h-0 flex-col gap-8 lg:h-full">
+              <div class="shrink-0">
+                <div class="border-t border-b border-zinc-900">
+                  <h3 class="flex items-center gap-2 py-4 font-playtime text-lg font-bold uppercase tracking-wide text-zinc-900 md:text-xl">
+                    <a href="#homecontact" class="hover:text-brand">Engines</a>
+                    <span aria-hidden="true" class="text-base font-normal">→</span>
+                  </h3>
+                </div>
+                <p class="mt-6 text-sm leading-relaxed text-zinc-600 md:text-base">
+                  We use state-of-the-art scan tool equipment to perform engine diagnostics and repair.
+                </p>
+              </div>
+              <div class="min-h-4 min-w-0 flex-1 lg:min-h-0" aria-hidden="true"></div>
+              <div class="aspect-square w-full shrink-0 overflow-hidden bg-zinc-100">
+                <img
+                  src="./dist/images/engine rpr.jpg"
+                  alt="Engine repair and maintenance"
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      
+
+      <!-- <section class="relative py-24" aria-label="Video">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1920&q=60')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-zinc-950/75"></div>
+        <div class="relative mx-auto max-w-3xl px-4 text-center">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand text-2xl text-white shadow-xl shadow-brand/40 transition hover:scale-105"
+            aria-label="Play overview video on YouTube"
+          >
+            ▶
+          </a>
+          <p class="mt-6 text-sm font-semibold uppercase tracking-wider text-zinc-300">See how we work</p>
+        </div>
+      </section> -->
+
+
+      <section id="vehicles-we-service" class="relative overflow-hidden border-t border-zinc-200 bg-white py-20 lg:py-55" aria-labelledby="vehicles-heading">
+        <div class="pointer-events-none absolute -left-20 top-1/2 hidden h-64 w-32 -translate-y-1/2 -skew-x-[16deg] bg-brand lg:block" aria-hidden="true"></div>
+        <!-- <div class="pointer-events-none absolute bottom-20 left-0 top-20 hidden w-px bg-zinc-200 md:left-6 md:block lg:left-10" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute bottom-20 right-0 top-20 hidden w-px bg-zinc-200 md:right-6 md:block lg:right-10" aria-hidden="true"></div> -->
+        <div class="relative mx-auto max-w-[1600px] px-4 md:px-6 lg:px-10">
+          <header class="mb-12 text-center md:mb-16">
+            <div class="flex items-center justify-center gap-4 mb-4">
+              <span class="h-px w-10 bg-brand sm:w-14" aria-hidden="true"></span>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">Vehicles</p>
+              <span class="h-px w-10 bg-brand  sm:w-14" aria-hidden="true"></span>
+            </div>
+            <!-- <p class="mb-4 flex items-center justify-center gap-2.5">
+              <span class="inline-block h-3 w-1 -skew-x-12 bg-brand" aria-hidden="true"></span>
+              <span class="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">Vehicles</span>
+            </p> -->
+            <h2 id="vehicles-heading" class="font-playtime text-3xl font-bold uppercase leading-tight tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
+              Vehicles we service
+            </h2>
+            <a
+              href="#homecontact"
+              class="mt-6 inline-flex items-center gap-2 border-b border-transparent pb-0.5 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-900 transition hover:border-brand hover:text-brand"
+            >
+              See all vehicles
+              <span aria-hidden="true">→</span>
+            </a>
+          </header>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4" data-reveal-vehicles>
+            <a
+              href="#homecontact"
+              class="flex min-h-[8rem] items-center justify-center rounded-lg bg-zinc-100 px-4 py-8 transition hover:bg-zinc-200/80 lg:min-h-[10rem]"
+            >
+              <img
+                class="h-20 w-auto max-h-[6rem] max-w-[10rem] object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                src="https://macchina.vamtam.com/wp-content/uploads/2021/06/audi-1.svg"
+                width="120"
+                height="120"
+                alt="Audi"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#homecontact"
+              class="flex min-h-[8rem] items-center justify-center rounded-lg bg-zinc-100 px-4 py-8 transition hover:bg-zinc-200/80 lg:min-h-[10rem]"
+            >
+              <img
+                class="h-20 w-auto max-h-[6rem] max-w-[10rem] object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                src="https://macchina.vamtam.com/wp-content/uploads/2021/06/chevrolet-1.svg"
+                width="120"
+                height="120"
+                alt="Chevrolet"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#homecontact"
+              class="flex min-h-[8rem] items-center justify-center rounded-lg bg-zinc-100 px-4 py-8 transition hover:bg-zinc-200/80 lg:min-h-[10rem]"
+            >
+              <img
+                class="h-20 w-auto max-h-[6rem] max-w-[10rem] object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                src="https://macchina.vamtam.com/wp-content/uploads/2021/06/dodge-2.svg"
+                width="116"
+                height="116"
+                alt="Dodge"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#homecontact"
+              class="flex min-h-[8rem] items-center justify-center rounded-lg bg-zinc-100 px-4 py-8 transition hover:bg-zinc-200/80 lg:min-h-[10rem]"
+            >
+              <img
+                class="h-20 w-auto max-h-[6rem] max-w-[10rem] object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                src="https://macchina.vamtam.com/wp-content/uploads/2021/06/hyundai-1.svg"
+                width="120"
+                height="120"
+                alt="Hyundai"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#homecontact"
+              class="flex min-h-[8rem] items-center justify-center rounded-lg bg-zinc-100 px-4 py-8 transition hover:bg-zinc-200/80 lg:min-h-[10rem]"
+            >
+              <img
+                class="h-20 w-auto max-h-[6rem] max-w-[10rem] object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                src="https://macchina.vamtam.com/wp-content/uploads/2021/06/kia-2.svg"
+                width="120"
+                height="120"
+                alt="Kia"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#homecontact"
+              class="flex min-h-[8rem] items-center justify-center rounded-lg bg-zinc-100 px-4 py-8 transition hover:bg-zinc-200/80 lg:min-h-[10rem]"
+            >
+              <img
+                class="h-20 w-auto max-h-[6rem] max-w-[10rem] object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                src="https://macchina.vamtam.com/wp-content/uploads/2021/06/land-rover-1.svg"
+                width="120"
+                height="120"
+                alt="Land Rover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#homecontact"
+              class="flex min-h-[8rem] items-center justify-center rounded-lg bg-zinc-100 px-4 py-8 transition hover:bg-zinc-200/80 lg:min-h-[10rem]"
+            >
+              <img
+                class="h-20 w-auto max-h-[6rem] max-w-[10rem] object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                src="https://macchina.vamtam.com/wp-content/uploads/2021/06/land-rover-1.svg"
+                width="120"
+                height="120"
+                alt="Land Rover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#homecontact"
+              class="flex min-h-[8rem] items-center justify-center rounded-lg bg-zinc-100 px-4 py-8 transition hover:bg-zinc-200/80 lg:min-h-[10rem]"
+            >
+              <img
+                class="h-20 w-auto max-h-[6rem] max-w-[10rem] object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                src="https://macchina.vamtam.com/wp-content/uploads/2021/06/land-rover-1.svg"
+                width="120"
+                height="120"
+                alt="Land Rover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="homeportfolio" class="relative overflow-hidden bg-blue-1000 py-20 lg:py-80">
+        <div
+          class="pointer-events-none absolute inset-0 bg-cover blur-sm bg-bottom  bg-no-repeat"
+          style="background-image: url('./dist/images/bg-img.jpg')"
+          aria-hidden="true"
+        ></div>
+        <div class="pointer-events-none absolute inset-0 bg-blue-1000/30" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 opacity-30" style="background: radial-gradient(ellipse at 20% 0%, rgba(234, 85, 1, 0.25), transparent 50%)"></div>
+        <div class="relative mx-auto max-w-[1600px] px-4 md:px-6 lg:px-10">
+          <div class="grid gap-12 lg:grid-cols-12 lg:items-start">
+            <div class="lg:col-span-3">
+              <div class="section-sub-chevron mb-4">
+                Recent work
+              </div>
+              <h2 class="font-playtime text-3xl font-bold leading-tight text-white md:text-4xl">Reliable vehicle maintenance, parts, and equipment support.</h2>
+              <p class="mt-4 text-zinc-400">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              <p class="mt-6 text-sm font-semibold text-white">
+                <a href="#homecontact" class="border-b border-brand pb-0.5 text-brand hover:text-brand/80">Start your next project →</a>
+              </p>
+              <!-- <div class="mt-8 flex gap-3">
+                <button type="button" class="carousel-prev flex h-11 w-11 items-center justify-center rounded border border-white/20 bg-white text-zinc-900 hover:bg-brand hover:text-white" data-target="servicesCarousel" aria-label="Previous services">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="carousel-next flex h-11 w-11 items-center justify-center rounded border border-white/20 bg-white text-zinc-900 hover:bg-brand hover:text-white" data-target="servicesCarousel" aria-label="Next services">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+              </div> -->
+            </div>
+            <div class="lg:col-span-9">
+              <div id="servicesCarousel" class="carousel-row flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2">
+                <article class="w-[min(100%,320px)] shrink-0 snap-start overflow-hidden rounded-lg bg-zinc-950 ring-1 ring-white/10">
+                  <a href="#homecontact" class="block aspect-[4/3] overflow-hidden">
+                    <img class="h-full w-full object-cover transition duration-500 hover:scale-105" src="./dist/images/fleet.jpg" alt="Fleet Maintenance Program" />
+                  </a>
+                  <div class="p-6">
+                    <h3 class="font-playtime text-lg font-semibold text-white"><a href="#homecontact" class="hover:text-brand">Fleet Maintenance Program</a></h3>
+                    <p class="mt-2 text-sm text-zinc-400">Provided routine servicing, diagnostics, and repairs for a fleet of commercial vehicles.</p>
+                    <a href="#homecontact" class="mt-4 inline-block text-sm font-bold text-brand hover:underline">View details</a>
+                  </div>
+                </article>
+                <article class="w-[min(100%,320px)] shrink-0 snap-start overflow-hidden rounded-lg bg-zinc-950 ring-1 ring-white/10">
+                  <a href="#homecontact" class="block aspect-[4/3] overflow-hidden">
+                    <img class="h-full w-full object-cover transition duration-500 hover:scale-105" src="./dist/images/engine rpr.jpg" alt="Engine Diagnostics" />
+                  </a>
+                  <div class="p-6">
+                    <h3 class="font-playtime text-lg font-semibold text-white"><a href="#homecontact" class="hover:text-brand">Engine & System Repairs</a></h3>
+                    <p class="mt-2 text-sm text-zinc-400">Performed engine overhauls, brake servicing, and electrical diagnostics for various vehicle types.</p>
+                    <a href="#homecontact" class="mt-4 inline-block text-sm font-bold text-brand hover:underline">View details</a>
+                  </div>
+                </article>
+                <article class="w-[min(100%,320px)] shrink-0 snap-start overflow-hidden rounded-lg bg-zinc-950 ring-1 ring-white/10">
+                  <a href="#homecontact" class="block aspect-[4/3] overflow-hidden">
+                    <img class="h-full w-full object-cover transition duration-500 hover:scale-105" src="./dist/images/bodywork.jpg" alt="Engine Diagnostics" />
+                  </a>
+                  <div class="p-6">
+                    <h3 class="font-playtime text-lg font-semibold text-white"><a href="#homecontact" class="hover:text-brand">Vehicle Customization & Bodywork</a></h3>
+                    <p class="mt-2 text-sm text-zinc-400">Handled repainting, modifications, and body repairs based on client requirements.</p>
+                    <a href="#homecontact" class="mt-4 inline-block text-sm font-bold text-brand hover:underline">View details</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="homeportfolio" class="relative overflow-hidden bg-white py-20 lg:py-28" aria-labelledby="popular-products-heading">
+        <div class="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-10">
+          <header class="mb-14 text-center lg:mb-20">
+            <div class="flex items-center justify-center gap-4">
+              <span class="h-px w-10 bg-brand sm:w-14" aria-hidden="true"></span>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">Popular Products</p>
+              <span class="h-px w-10 bg-brand  sm:w-14" aria-hidden="true"></span>
+            </div>
+            <h2 id="popular-products-heading" class="mt-4 font-playtime text-3xl font-bold text-zinc-900 md:text-4xl lg:text-5xl">
+              Browse Our Products
+            </h2>
+          </header>
+
+          <div class="grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-10">
+            <!-- Product 1 -->
+            <article class="flex flex-col items-center text-center">
+              <div
+                class="relative flex aspect-square w-full max-w-[280px] items-center justify-center overflow-hidden rounded bg-gray-50 p-6 transition duration-300 hover:bg-gray-800/10 sm:max-w-none zoom-reveal-interval-0"
+                data-zoom-reveal
+              >
+                <img
+                  src="./dist/images/brakepad.png"
+                  alt="Brake rotors"
+                  class="zoom-reveal-img max-h-44 w-full object-contain object-center sm:max-h-52"
+                />
+              </div>
+              <div class="mt-4 flex gap-0.5 text-amber-500" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <h3 class="mt-3 text-base font-bold text-zinc-900">Brake pad</h3>
+              <p class="mt-1 text-sm font-medium text-zinc-700">₱459.00</p>
+            </article>
+
+            <!-- Product 2 -->
+            <article class="flex flex-col items-center text-center">
+              <div
+                class="relative flex aspect-square w-full max-w-[280px] items-center justify-center overflow-hidden rounded bg-gray-50 p-6 transition duration-300 hover:bg-gray-800/10 sm:max-w-none zoom-reveal-interval-1"
+                data-zoom-reveal
+              >
+                <img
+                  src="./dist/images/mags.png"
+                  alt="Automotive suspension springs"
+                  class="zoom-reveal-img max-h-44 w-full object-contain object-center sm:max-h-52"
+                />
+              </div>
+              <div class="mt-4 flex gap-0.5 text-amber-500" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <h3 class="mt-3 text-base font-bold text-zinc-900">Mags-Wheels</h3>
+              <p class="mt-1 text-sm font-medium text-zinc-700">₱10,455.00</p>
+            </article>
+
+            <!-- Product 3 -->
+            <article class="flex flex-col items-center text-center">
+              <div
+                class="relative flex aspect-square w-full max-w-[280px] items-center justify-center overflow-hidden rounded bg-gray-50 p-6 transition duration-300 hover:bg-gray-800/10 sm:max-w-none zoom-reveal-interval-2"
+                data-zoom-reveal
+              >
+                <img
+                  src="./dist/images/oil-filter.png"
+                  alt="Shock absorbers and workshop parts"
+                  class="zoom-reveal-img max-h-44 w-full object-contain object-center sm:max-h-52"
+                />
+              </div>
+              <div class="mt-4 flex gap-0.5 text-amber-500" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <h3 class="mt-3 text-base font-bold text-zinc-900">Oil Filter</h3>
+              <p class="mt-1 text-sm font-medium text-zinc-700">₱599.00</p>
+            </article>
+
+            <!-- Product 4 (sale) -->
+            <article class="flex flex-col items-center text-center">
+              <div
+                class="relative flex aspect-square w-full max-w-[280px] items-center justify-center overflow-hidden rounded bg-gray-50 p-6 transition duration-300 hover:bg-gray-800/10 sm:max-w-none zoom-reveal-interval-3"
+                data-zoom-reveal
+              >
+                <span class="absolute right-3 top-3 z-10 rounded bg-orange-500 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-white">Sale</span>
+                <img
+                  src="./dist/images/sparkplug.png"
+                  alt="Coilover shock absorbers"
+                  class="zoom-reveal-img max-h-44 w-full object-contain object-center sm:max-h-52"
+                />
+              </div>
+              <div class="mt-4 flex gap-0.5 text-amber-500" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+              </div>
+              <h3 class="mt-3 text-base font-bold text-zinc-900">Sparkplug</h3>
+              <p class="mt-1 text-sm font-medium text-zinc-700">
+                ₱55.00 <span class="ml-2 text-zinc-400 line-through">₱369.00</span>
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section id="homecontact" class="relative overflow-hidden py-20 lg:py-28">
+        <div
+          class="pointer-events-none absolute inset-y-0 left-0 w-[min(100%,560px)] bg-cover bg-no-repeat bg-left opacity-[0.16] sm:w-1/2 sm:opacity-[0.2] lg:w-[46%] lg:opacity-[0.24]"
+          style="background-image: url('./dist/images/dismantled-car.jpg'); -webkit-mask-image: linear-gradient(to right, #000 58%, transparent 100%); mask-image: linear-gradient(to right, #000 58%, transparent 100%)"
+          aria-hidden="true"
+        ></div>
+        <div class="pointer-events-none absolute inset-0 opacity-40" style="background: radial-gradient(circle at 100% 0%, rgba(234, 85, 1, 0.12), transparent 45%), radial-gradient(circle at 0% 100%, rgba(24, 24, 27, 0.08), transparent 40%)"></div>
+        <div class="relative mx-auto max-w-[1600px] px-4 md:px-6 lg:px-10">
+          <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
+            <div class="lg:col-span-7">
+              <div class="section-sub-chevron mb-4 text-brand">
+                Work process
+              </div>
+              <h2 class="font-playtime text-3xl font-bold text-zinc-900 md:text-4xl">How we complete work</h2>
+              <ol class="mt-10 space-y-8">
+                <li class="flex gap-4">
+                  <span class="font-playtime text-3xl font-bold text-brand/40">01</span>
+                  <div>
+                    <h3 class="font-playtime text-lg font-semibold text-zinc-900">Sales & distribution</h3>
+                    <p class="mt-1 text-sm text-zinc-600">We supply vehicle parts, accessories, lubricants, and related automotive products through wholesale and retail channels, including sourcing, importation, and distribution to meet client requirements.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="font-playtime text-3xl font-bold text-brand/40">02</span>
+                  <div>
+                    <h3 class="font-playtime text-lg font-semibold text-zinc-900">Diagnostics & assessment</h3>
+                    <p class="mt-1 text-sm text-zinc-600">We perform thorough inspections, diagnostic testing, and technical evaluations to identify issues and define the appropriate repair or service plan.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="font-playtime text-3xl font-bold text-brand/40">03</span>
+                  <div>
+                    <h3 class="font-playtime text-lg font-semibold text-zinc-900">Repair & servicing</h3>
+                    <p class="mt-1 text-sm text-zinc-600">We carry out repair, maintenance, and customization of motor vehicles, including parts replacement, mechanical work, and body restoration for various vehicle types.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span class="font-playtime text-3xl font-bold text-brand/40">04</span>
+                  <div>
+                    <h3 class="font-playtime text-lg font-semibold text-zinc-900">Equipment & materials support</h3>
+                    <p class="mt-1 text-sm text-zinc-600">We source and provide specialized machinery, equipment, and materials required for vehicle servicing and manufacturing operations.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl bg-blue-1000 p-8 text-white shadow-2xl ring-1 ring-white/10 lg:p-10">
+                <h3 class="font-playtime text-2xl font-bold">Ask us a question…</h3>
+                <p class="mt-2 text-sm text-zinc-400">Tell us about the vehicle, symptoms, and timeline — we’ll respond with next steps.</p>
+                <form class="mt-8 space-y-4" action="#" method="post">
+                  <input type="text" name="name" placeholder="Full name" class="w-full rounded-lg border border-white/10 px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand" />
+                  <input type="email" name="email" placeholder="Email address" class="w-full rounded-lg border border-white/10 px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand" />
+                  <input type="text" name="subject" placeholder="Your inquiry" class="w-full rounded-lg border border-white/10 px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand" />
+                  <textarea name="message" rows="4" placeholder="Write your message" class="w-full rounded-lg border border-white/10 px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"></textarea>
+                  <button type="submit" class="w-full rounded-lg bg-brand py-3.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-brand/90">Send message</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- <section class="relative overflow-hidden pb-24 pt-12 lg:pb-28" aria-label="Partners">
+        <div class="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-10">
+          <div class="section-sub-chevron mb-4 text-brand">
+            <svg width="11" height="15" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3.143 10L0 15V0l3.143 5v5z" fill="currentColor" />
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.286 10L3.143 15v-5l1.571-2.5L3.143 5V0l3.143 5v5zm0 0l1.571-2.5L6.286 5V0L11 7.5 6.286 15v-5z" fill="currentColor" />
+            </svg>
+            Partners
+          </div>
+          <h2 class="font-playtime max-w-2xl text-3xl font-bold text-zinc-900 md:text-4xl">Clients &amp; suppliers we integrate with</h2>
+          <p class="mt-4 max-w-2xl text-zinc-600">OEM data, parts networks, and fleet software — we meet you where your operation already runs.</p>
+          <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+            <div class="flex h-20 items-center justify-center rounded-lg border border-zinc-200 bg-white text-sm font-bold text-zinc-400">OEM A</div>
+            <div class="flex h-20 items-center justify-center rounded-lg border border-zinc-200 bg-white text-sm font-bold text-zinc-400">Parts B</div>
+            <div class="flex h-20 items-center justify-center rounded-lg border border-zinc-200 bg-white text-sm font-bold text-zinc-400">Fleet C</div>
+            <div class="flex h-20 items-center justify-center rounded-lg border border-zinc-200 bg-white text-sm font-bold text-zinc-400">Telematics</div>
+            <div class="flex h-20 items-center justify-center rounded-lg border border-zinc-200 bg-white text-sm font-bold text-zinc-400">Hydraulics</div>
+            <div class="flex h-20 items-center justify-center rounded-lg border border-zinc-200 bg-white text-sm font-bold text-zinc-400">Fluids</div>
+            <div class="flex h-20 items-center justify-center rounded-lg border border-zinc-200 bg-white text-sm font-bold text-zinc-400">Tire</div>
+            <div class="flex h-20 items-center justify-center rounded-lg border border-zinc-200 bg-white text-sm font-bold text-zinc-400">Finance</div>
+          </div>
+        </div>
+      </section> -->
+    </main>
+
+    <footer class="relative overflow-hidden bg-blue-1000 pt-16 text-white lg:pt-20">
+      <div class="absolute inset-0 opacity-40"></div>
+      <div class="relative mx-auto max-w-[1600px] px-4 md:px-6 lg:px-10">
+        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h3 class="font-playtime text-lg font-semibold">About company</h3>
+            <p class="mt-4 text-sm leading-relaxed text-zinc-400">MarsMotors delivers engineering-minded automotive service for fleets and heavy equipment — transparent scope, documented results.</p>
+            <p class="mt-6 font-playtime text-4xl font-bold text-transparent text-stroke-red tracking-wider">Since 2015</p>
+          </div>
+          <div>
+            <h3 class="font-playtime text-lg font-semibold">Useful links</h3>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li><a class="text-zinc-400 hover:text-brand" href="#homeabout">About</a></li>
+              <li><a class="text-zinc-400 hover:text-brand" href="#homeportfolio">Projects</a></li>
+              <li><a class="text-zinc-400 hover:text-brand" href="#homeservices">Services</a></li>
+              <li><a class="text-zinc-400 hover:text-brand" href="#homecontact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-playtime text-lg font-semibold">Office</h3>
+            <p class="mt-4 text-sm text-zinc-400">
+              <a class="hover:text-brand" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">2ND FLOOR ASHGARDINDUSTRIES BLDG., C.CONGSON ST., CAMBIOHAN Casili , CONSOLACION, CEBU</a>
+            </p>
+            <h4 class="mt-6 text-sm font-semibold">Email</h4>
+            <p class="mt-1 text-sm text-zinc-400">Interested in working with us?</p>
+            <a class="text-sm font-semibold text-brand hover:underline" href="mailto:info@marsmotors.example">info@marsmotors.example</a>
+          </div>
+          <div>
+            <h3 class="font-playtime text-lg font-semibold">Phone</h3>
+            <div class="mt-4 space-y-1 text-sm">
+              <p><a class="text-zinc-300 hover:text-brand" href="tel:+971551579261">+971 551 579 261</a></p>
+              <p><a class="text-zinc-300 hover:text-brand" href="tel:+971555961659">+97 155 596 1659</a></p>
+            </div>
+            <h4 class="mt-8 text-sm font-semibold">Follow us</h4>
+            <div class="mt-3 flex gap-2">
+              <a href="#" class="flex h-10 w-10 items-center justify-center rounded border border-white/15 text-zinc-300 hover:border-brand hover:text-brand" aria-label="X">𝕏</a>
+              <a href="#" class="flex h-10 w-10 items-center justify-center rounded border border-white/15 text-zinc-300 hover:border-brand hover:text-brand" aria-label="Facebook">f</a>
+              <a href="#" class="flex h-10 w-10 items-center justify-center rounded border border-white/15 text-zinc-300 hover:border-brand hover:text-brand" aria-label="LinkedIn">in</a>
+              <a href="#" class="flex h-10 w-10 items-center justify-center rounded border border-white/15 text-zinc-300 hover:border-brand hover:text-brand" aria-label="Instagram">◎</a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 border-t border-white/10 py-6 text-center text-sm text-zinc-500">
+          <p>© <span id="year"></span> MarsMotors.</p>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#home" id="backTop" class="fixed bottom-6 right-6 z-[60] flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-lg opacity-0 pointer-events-none transition hover:bg-brand/90" aria-label="Back to top">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </a>
+
+    <script src="./src/main.js" defer></script>
+  </body>
+</html>
