@@ -79,9 +79,9 @@
   });
 
   var aboutCopy = {
-    h: "MarsMotors grew from a single heavy-duty bay into a full diagnostics and fleet partner — always chasing the same thing: get it right the first time, with proof in the report.",
-    m: "Keep critical equipment moving: disciplined diagnostics, honest scope, and workmanship that survives real duty cycles — not just the test drive.",
-    v: "Become the default partner for industrial and military fleets who cannot afford guesswork — where every repair ships with evidence and accountability.",
+    h: "Since our establishment, we have grown into a trusted provider in the vehicle services industry, specializing in heavy-duty, military, industrial, and commercial landcraft. We began with a focus on delivering reliable automotive solutions and have expanded into manufacturing support, parts distribution, and comprehensive repair and maintenance services for civilian, government, and defense sectors.",
+    m: "Our mission is to provide high-quality vehicle solutions by manufacturing, supplying, and servicing military, industrial, and commercial vehicles. We are committed to delivering reliable parts, expert maintenance, and technical support while ensuring safety, durability, and performance for every client we serve.",
+    v: "Our vision is to be a leading and trusted name in the global vehicle services and manufacturing industry, recognized for excellence in innovation, quality, and service across military, industrial, and commercial automotive sectors.",
   };
   var panel = document.getElementById("aboutPanel");
   document.querySelectorAll(".about-tab").forEach(function (btn) {
