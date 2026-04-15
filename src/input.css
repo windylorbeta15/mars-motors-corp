@@ -14,8 +14,9 @@
 }
 
 @theme {
-  --color-brand: #cb2629;
+  --color-brand: #e22a2d;
   --color-blue-1000: #0b0d25;
+  --color-dark-blue-1000: #0e1a4f;
   --font-rubik: "Rubik", ui-sans-serif, system-ui, sans-serif;
   --font-playtime: "RM Playtime-FontZillion", "Rubik", ui-sans-serif, system-ui, sans-serif;
   --animate-fade-in: fade-in 3.65s ease-out forwards;
@@ -119,7 +120,7 @@
     flex-shrink: 0;
     height: 2.5rem;
     width: 2.5rem;
-    background-color: #ff6d3f;
+    background-color: #de1e1d;
     -webkit-mask-image: url("images/logos/gear.png");
     -webkit-mask-size: contain;
     -webkit-mask-position: center;
@@ -225,6 +226,23 @@
   .reveal-slide-ltr.is-in-view.reveal-stagger-5,
   .reveal-slide-rtl.is-in-view.reveal-stagger-5 {
     animation-delay: 0.6s;
+  }
+
+  @keyframes reveal-fade-scroll {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  [data-reveal-fade] {
+    opacity: 0;
+  }
+
+  [data-reveal-fade].is-in-view {
+    animation: reveal-fade-scroll 10.5s cubic-bezier(0.1, 1, 0.36, 1) forwards;
   }
 
   @keyframes zoom-reveal-out {
@@ -413,6 +431,12 @@
       animation: none;
       opacity: 1;
       transform: none;
+    }
+
+    [data-reveal-fade],
+    [data-reveal-fade].is-in-view {
+      animation: none;
+      opacity: 1;
     }
 
     [data-reveal-services] > .service-reveal-col,

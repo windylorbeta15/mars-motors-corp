@@ -155,7 +155,7 @@
     stats[0].closest("section") && obs.observe(stats[0].closest("section"));
   }
 
-  document.querySelectorAll("[data-reveal-ltr], [data-reveal-rtl]").forEach(function (el) {
+  document.querySelectorAll("[data-reveal-ltr], [data-reveal-rtl], [data-reveal-fade]").forEach(function (el) {
     var revealObs = new IntersectionObserver(
       function (entries, observer) {
         entries.forEach(function (e) {
